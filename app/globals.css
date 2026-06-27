@@ -1,0 +1,628 @@
+@import url('https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@300;400;600;700;800&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  /* Keka HR Official Colors - Based on actual portal */
+  --keka-primary: #673ab7;
+  --keka-primary-dark: #512da8;
+  --keka-primary-light: #ede7f6;
+  --keka-accent: #ff4081;
+  --keka-blue: #3f51b5;
+  
+  /* Backgrounds */
+  --bg-body: #f5f6fa;
+  --bg-sidebar: #ffffff;
+  --bg-header: #ffffff;
+  --bg-card: #ffffff;
+  
+  /* Text */
+  --text-primary: #2d3748;
+  --text-secondary: #718096;
+  --text-muted: #a0aec0;
+  
+  /* Borders */
+  --border-light: #e2e8f0;
+  --border-medium: #cbd5e0;
+  
+  /* Shadows */
+  --shadow-subtle: 0 1px 3px rgba(0,0,0,0.06);
+  --shadow-card: 0 2px 8px rgba(0,0,0,0.08);
+  --shadow-elevated: 0 4px 16px rgba(0,0,0,0.1);
+  --shadow-float: 0 8px 30px rgba(0,0,0,0.12);
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  font-size: 14px;
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: 'Nunito Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  background: var(--bg-body);
+  color: var(--text-primary);
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Typography */
+h1, h2, h3, h4, h5, h6 {
+  font-weight: 700;
+  line-height: 1.2;
+  color: var(--text-primary);
+}
+
+h1 { font-size: 1.75rem; }
+h2 { font-size: 1.5rem; }
+h3 { font-size: 1.25rem; }
+h4 { font-size: 1.125rem; }
+h5 { font-size: 1rem; }
+h6 { font-size: 0.875rem; }
+
+p {
+  color: var(--text-secondary);
+  line-height: 1.6;
+}
+
+/* Keka HR Sidebar */
+.keka-sidebar {
+  width: 250px;
+  height: 100vh;
+  background: var(--bg-sidebar);
+  border-right: 1px solid var(--border-light);
+  position: fixed;
+  left: 0;
+  top: 0;
+  overflow-y: auto;
+  z-index: 100;
+}
+
+.keka-sidebar-header {
+  height: 64px;
+  display: flex;
+  align-items: center;
+  padding: 0 20px;
+  border-bottom: 1px solid var(--border-light);
+}
+
+.keka-logo {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.keka-logo-icon {
+  width: 36px;
+  height: 36px;
+  background: linear-gradient(135deg, var(--keka-primary) 0%, var(--keka-primary-dark) 100%);
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  font-weight: 800;
+  font-size: 18px;
+}
+
+.keka-logo-text {
+  font-size: 18px;
+  font-weight: 800;
+  color: var(--text-primary);
+  letter-spacing: -0.5px;
+}
+
+.keka-sidebar-nav {
+  padding: 16px 12px;
+}
+
+.keka-nav-section {
+  margin-bottom: 20px;
+}
+
+.keka-nav-section-title {
+  font-size: 11px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.8px;
+  color: var(--text-muted);
+  padding: 0 12px;
+  margin-bottom: 8px;
+}
+
+.keka-nav-item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 10px 12px;
+  border-radius: 8px;
+  color: var(--text-secondary);
+  font-size: 13px;
+  font-weight: 600;
+  text-decoration: none;
+  transition: all 0.2s ease;
+  margin-bottom: 2px;
+}
+
+.keka-nav-item:hover {
+  background: var(--keka-primary-light);
+  color: var(--keka-primary);
+}
+
+.keka-nav-item.active {
+  background: var(--keka-primary);
+  color: white;
+  box-shadow: 0 2px 8px rgba(103, 58, 183, 0.3);
+}
+
+.keka-nav-item-icon {
+  width: 18px;
+  height: 18px;
+  flex-shrink: 0;
+}
+
+/* Keka HR Header */
+.keka-header {
+  height: 64px;
+  background: var(--bg-header);
+  border-bottom: 1px solid var(--border-light);
+  position: fixed;
+  left: 250px;
+  right: 0;
+  top: 0;
+  z-index: 90;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 32px;
+  box-shadow: var(--shadow-subtle);
+}
+
+.keka-search {
+  flex: 1;
+  max-width: 480px;
+  position: relative;
+}
+
+.keka-search-input {
+  width: 100%;
+  height: 40px;
+  padding: 0 16px 0 44px;
+  border: 1px solid var(--border-light);
+  border-radius: 8px;
+  background: var(--bg-body);
+  font-size: 13px;
+  color: var(--text-primary);
+  transition: all 0.2s ease;
+}
+
+.keka-search-input:focus {
+  outline: none;
+  border-color: var(--keka-primary);
+  background: white;
+  box-shadow: 0 0 0 3px var(--keka-primary-light);
+}
+
+.keka-search-icon {
+  position: absolute;
+  left: 14px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: var(--text-muted);
+  width: 18px;
+  height: 18px;
+}
+
+.keka-header-actions {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.keka-icon-button {
+  width: 40px;
+  height: 40px;
+  border-radius: 8px;
+  border: none;
+  background: transparent;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  position: relative;
+}
+
+.keka-icon-button:hover {
+  background: var(--bg-body);
+}
+
+.keka-icon-button svg {
+  width: 20px;
+  height: 20px;
+  color: var(--text-secondary);
+}
+
+.keka-notification-badge {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  width: 8px;
+  height: 8px;
+  background: var(--keka-accent);
+  border-radius: 50%;
+  border: 2px solid white;
+}
+
+/* Keka HR Main Content */
+.keka-main {
+  margin-left: 250px;
+  margin-top: 64px;
+  min-height: calc(100vh - 64px);
+  padding: 24px 32px;
+  background: var(--bg-body);
+}
+
+/* Keka HR Cards */
+.keka-card {
+  background: var(--bg-card);
+  border-radius: 12px;
+  box-shadow: var(--shadow-card);
+  border: 1px solid var(--border-light);
+  overflow: hidden;
+}
+
+.keka-card-header {
+  padding: 20px 24px;
+  border-bottom: 1px solid var(--border-light);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.keka-card-title {
+  font-size: 15px;
+  font-weight: 700;
+  color: var(--text-primary);
+}
+
+.keka-card-body {
+  padding: 24px;
+}
+
+.keka-card-footer {
+  padding: 16px 24px;
+  border-top: 1px solid var(--border-light);
+  background: var(--bg-body);
+}
+
+/* Keka HR Stats Cards */
+.keka-stats-card {
+  background: white;
+  border-radius: 12px;
+  padding: 24px;
+  box-shadow: var(--shadow-card);
+  border: 1px solid var(--border-light);
+  transition: all 0.2s ease;
+}
+
+.keka-stats-card:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-elevated);
+}
+
+.keka-stats-card-icon {
+  width: 52px;
+  height: 52px;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 16px;
+  background: var(--keka-primary-light);
+  color: var(--keka-primary);
+}
+
+.keka-stats-card-value {
+  font-size: 32px;
+  font-weight: 800;
+  color: var(--text-primary);
+  line-height: 1;
+  margin-bottom: 4px;
+}
+
+.keka-stats-card-label {
+  font-size: 13px;
+  color: var(--text-secondary);
+  font-weight: 600;
+}
+
+/* Keka HR Buttons */
+.keka-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 10px 20px;
+  font-size: 13px;
+  font-weight: 700;
+  border-radius: 8px;
+  border: none;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  text-decoration: none;
+}
+
+.keka-btn-primary {
+  background: var(--keka-primary);
+  color: white;
+  box-shadow: 0 2px 8px rgba(103, 58, 183, 0.3);
+}
+
+.keka-btn-primary:hover {
+  background: var(--keka-primary-dark);
+  box-shadow: 0 4px 16px rgba(103, 58, 183, 0.4);
+  transform: translateY(-1px);
+}
+
+.keka-btn-secondary {
+  background: white;
+  color: var(--keka-primary);
+  border: 1px solid var(--keka-primary);
+}
+
+.keka-btn-secondary:hover {
+  background: var(--keka-primary-light);
+}
+
+/* Keka HR Quick Actions */
+.keka-quick-action {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+  padding: 24px 16px;
+  background: white;
+  border-radius: 12px;
+  border: 1px solid var(--border-light);
+  box-shadow: var(--shadow-card);
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.keka-quick-action:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-elevated);
+  border-color: var(--keka-primary);
+}
+
+.keka-quick-action-icon {
+  width: 56px;
+  height: 56px;
+  border-radius: 14px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg, var(--keka-primary) 0%, var(--keka-primary-dark) 100%);
+  color: white;
+  box-shadow: 0 4px 12px rgba(103, 58, 183, 0.3);
+}
+
+.keka-quick-action-label {
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--text-primary);
+  text-align: center;
+}
+
+/* Keka HR Badge */
+.keka-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 4px 12px;
+  font-size: 12px;
+  font-weight: 700;
+  border-radius: 6px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.keka-badge-primary {
+  background: var(--keka-primary-light);
+  color: var(--keka-primary);
+}
+
+.keka-badge-success {
+  background: #d1fae5;
+  color: #10b981;
+}
+
+.keka-badge-warning {
+  background: #fef3c7;
+  color: #f59e0b;
+}
+
+.keka-badge-danger {
+  background: #fee2e2;
+  color: #ef4444;
+}
+
+/* Keka HR Avatar */
+.keka-avatar {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--keka-primary) 0%, var(--keka-primary-dark) 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  font-weight: 700;
+  font-size: 14px;
+  border: 2px solid white;
+  box-shadow: var(--shadow-subtle);
+}
+
+/* Keka HR Table */
+.keka-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.keka-table th {
+  padding: 12px 16px;
+  text-align: left;
+  font-size: 12px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  color: var(--text-muted);
+  border-bottom: 2px solid var(--border-light);
+}
+
+.keka-table td {
+  padding: 16px;
+  border-bottom: 1px solid var(--border-light);
+  font-size: 13px;
+  color: var(--text-primary);
+}
+
+.keka-table tbody tr:hover {
+  background: var(--keka-primary-light);
+}
+
+/* Keka HR Welcome Banner */
+.keka-welcome-banner {
+  background: linear-gradient(135deg, var(--keka-primary) 0%, var(--keka-primary-dark) 100%);
+  border-radius: 16px;
+  padding: 32px;
+  color: white;
+  margin-bottom: 24px;
+  box-shadow: 0 8px 30px rgba(103, 58, 183, 0.3);
+}
+
+.keka-welcome-title {
+  font-size: 24px;
+  font-weight: 800;
+  margin-bottom: 8px;
+}
+
+.keka-welcome-subtitle {
+  font-size: 14px;
+  opacity: 0.9;
+}
+
+/* Keka HR Module Grid */
+.keka-module-grid {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  gap: 16px;
+}
+
+.keka-module-card {
+  background: white;
+  border-radius: 12px;
+  padding: 20px;
+  border: 1px solid var(--border-light);
+  box-shadow: var(--shadow-card);
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.keka-module-card:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-elevated);
+  border-color: var(--keka-primary);
+}
+
+.keka-module-card-icon {
+  width: 48px;
+  height: 48px;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg, var(--keka-primary) 0%, var(--keka-primary-dark) 100%);
+  color: white;
+  margin-bottom: 12px;
+  box-shadow: 0 4px 12px rgba(103, 58, 183, 0.3);
+}
+
+.keka-module-card-title {
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--text-primary);
+  margin-bottom: 4px;
+}
+
+.keka-module-card-desc {
+  font-size: 12px;
+  color: var(--text-muted);
+}
+
+/* Scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--bg-body);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--border-medium);
+  border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--text-muted);
+}
+
+/* Keka HR Animations */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes slideUp {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.animate-fade-in {
+  animation: fadeIn 0.3s ease-out;
+}
+
+.animate-slide-up {
+  animation: slideUp 0.4s ease-out;
+}
+
+/* Utility Classes */
+.text-primary { color: var(--text-primary); }
+.text-secondary { color: var(--text-secondary); }
+.text-muted { color: var(--text-muted); }
+.text-brand { color: var(--keka-primary); }
+
+.bg-primary { background: var(--bg-body); }
+.bg-white { background: white; }
+.bg-brand-light { background: var(--keka-primary-light); }
+
+.shadow-subtle { box-shadow: var(--shadow-subtle); }
+.shadow-card { box-shadow: var(--shadow-card); }
+.shadow-elevated { box-shadow: var(--shadow-elevated); }
+
+.rounded-lg { border-radius: 12px; }
+.rounded-xl { border-radius: 16px; }
+
+.quicktile{
+  width:100%;
+}

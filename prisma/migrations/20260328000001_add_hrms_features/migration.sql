@@ -1,0 +1,4 @@
+-- This migration is empty because the database schema is already in sync
+-- with the Prisma schema. The previous migration (20260327215711_hrmsprod)
+-- was applied directly to the database but not tracked in the migrations table.
+-- The enum changes were applied separately in 20260328000000_add_enum_values.
